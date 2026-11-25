@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Ad-Free Redirect",
+  "version": "1.0.0",
+  "description": "Redirect the current YouTube video to its yout-ube.com embed page when you click the popup button.",
+  "permissions": [
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://*.youtube.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
