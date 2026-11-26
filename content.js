@@ -7,7 +7,9 @@ const VIDEO_CARD_SELECTOR = [
   "ytd-grid-video-renderer",
   "ytd-playlist-video-renderer",
   "yt-lockup-view-model",
-  "ytd-reel-item-renderer"
+  "ytd-reel-item-renderer",
+  "ytm-shorts-lockup-view-model",
+  "ytm-shorts-lockup-view-model-v2"
 ].join(", ");
 const LEGACY_MENU_SELECTOR = "ytd-menu-popup-renderer[role='menu']";
 const MODERN_MENU_SELECTOR = "yt-list-view-model[role='menu']";
@@ -24,8 +26,8 @@ function getVideoIdFromElement(element) {
       return dataVideoId;
     }
 
-    const watchLink = card.querySelector('a[href*="/watch"]');
-    const videoId = getVideoIdFromUrl(watchLink?.href);
+    const videoLink = card.querySelector('a[href*="/shorts/"], a[href*="/watch"]');
+    const videoId = getVideoIdFromUrl(videoLink?.href);
     if (videoId) {
       return videoId;
     }
@@ -38,10 +40,11 @@ function getVideoIdFromElement(element) {
       return dataVideoId;
     }
 
-    const watchLink = ancestor.querySelector?.('a[href*="/watch"]');
-    const videoId = getVideoIdFromUrl(watchLink?.href);
-    if (videoId) {
-      return videoId;
+    if (ancestor.matches("a[href*='/shorts/'], a[href*='/watch']")) {
+      const videoId = getVideoIdFromUrl(ancestor.href);
+      if (videoId) {
+        return videoId;
+      }
     }
   }
 
@@ -69,7 +72,12 @@ function getVideoIdFromUrl(urlString) {
 
   try {
     const url = new URL(urlString, window.location.origin);
-    return url.pathname === "/watch" ? url.searchParams.get("v") : null;
+    if (url.pathname === "/watch") {
+      return url.searchParams.get("v") || null;
+    }
+
+    const shortsMatch = url.pathname.match(/^\/shorts\/([^/]+)/);
+    return shortsMatch ? decodeURIComponent(shortsMatch[1]) : null;
   } catch (error) {
     console.error("Could not read the YouTube video link:", error);
     return null;
