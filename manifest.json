@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Ad-Free Redirect",
+  "name": "Youtube Ad-Free Video",
   "version": "1.0.0",
   "description": "Redirect the current YouTube video to its yout-ube.com embed page when you click the popup button.",
   "permissions": [
@@ -9,7 +9,28 @@
   "host_permissions": [
     "https://*.youtube.com/*"
   ],
+  "icons": {
+    "16": "youtube-ad-free-video.png",
+    "48": "youtube-ad-free-video.png",
+    "128": "youtube-ad-free-video.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
   "action": {
+    "default_icon": {
+      "16": "youtube-ad-free-video.png",
+      "48": "youtube-ad-free-video.png",
+      "128": "youtube-ad-free-video.png"
+    },
     "default_popup": "popup.html"
   }
 }
