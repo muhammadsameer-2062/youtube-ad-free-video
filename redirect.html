@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>YouTube Redirect</title>
+</head>
+<body>
+  <p>Redirecting to YouTube...</p>
+
+  <script>
+    const videoId = new URLSearchParams(location.search).get("v");
+
+    if (/^[A-Za-z0-9_-]{11}$/.test(videoId || "")) {
+      const target =
+        `https://www.youtube-nocookie.com/embed/${videoId}` +
+        `?playlist=${videoId}&autoplay=1&iv_load_policy=3&loop=1&start=`;
+
+      window.location.replace(target);
+    } else {
+      document.body.textContent = "Invalid YouTube video ID.";
+    }
+  </script>
+</body>
+</html>
