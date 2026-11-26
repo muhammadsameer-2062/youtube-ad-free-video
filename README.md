@@ -29,11 +29,13 @@ Example:
 2. Click the three-dot menu next to a video.
 3. Select **Open Ad-Free Video** to open that video on its matching ad-free
    page.
+4. Hold **Ctrl** while selecting the menu item to open it in a background tab.
 
 ## Use the extension popup
 
 1. Open a YouTube video page.
 2. Click the extension icon in Chrome's toolbar.
 3. Click **Open ad-free video**.
+   Hold **Ctrl** while clicking to open the video in a background tab instead.
 
 On other pages, the popup displays a message instead of the redirect button.

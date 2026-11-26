@@ -189,11 +189,29 @@ function createMenuItem(template, videoId, modern) {
     "click",
     (event) => {
       event.preventDefault();
-      event.stopImmediatePropagation();
+      const videoId = item.getAttribute("data-ad-free-video-id");
+      if (event.ctrlKey) {
+        chrome.runtime.sendMessage(
+          { type: "open-ad-free-video-in-new-tab", videoId },
+          (response) => {
+            if (chrome.runtime.lastError) {
+              console.error(
+                "Could not open the ad-free video in a new tab:",
+                chrome.runtime.lastError.message
+              );
+            } else if (!response?.success) {
+              console.error(
+                "Could not open the ad-free video in a new tab:",
+                response?.error || "The extension did not confirm the new tab."
+              );
+            }
+          }
+        );
+        return;
+      }
+
       window.location.assign(
-        `https://www.yout-ube.com/embed/${encodeURIComponent(
-          item.getAttribute("data-ad-free-video-id")
-        )}`
+        `https://www.yout-ube.com/embed/${encodeURIComponent(videoId)}`
       );
     },
     true

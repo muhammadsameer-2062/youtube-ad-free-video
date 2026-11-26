@@ -32,5 +32,8 @@
       "128": "youtube-ad-free-video.png"
     },
     "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
   }
 }
