@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Youtube Ad-Free Video",
   "version": "1.0.0",
-  "description": "Redirect the current YouTube video to its yout-ube.com embed page when you click the popup button.",
+  "description": "Open YouTube videos on the ad-free video redirect page.",
   "permissions": [
     "tabs"
   ],

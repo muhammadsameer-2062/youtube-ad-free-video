@@ -1,7 +1,7 @@
 # Youtube Ad-Free Video
 
 Click the extension icon, then click **Open ad-free video** to redirect the
-current YouTube video to its matching `yout-ube.com` embed page. You can also
+current YouTube video to its matching ad-free video page. You can also
 open a video directly from its three-dot menu on the YouTube home and search
 pages by selecting **Open Ad-Free Video**. This option is added to videos as
 they load, including when you scroll for more results.
@@ -9,7 +9,7 @@ they load, including when you scroll for more results.
 Example:
 
 - `https://www.youtube.com/watch?v=1234567890`
-- opens `https://www.yout-ube.com/embed/1234567890`
+- opens `https://muhammadsameer-2062.github.io/youtube-ad-free-video/redirect.html?v=1234567890`
 
 ## Download and install in Chrome
 

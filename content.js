@@ -211,7 +211,8 @@ function createMenuItem(template, videoId, modern) {
       }
 
       window.location.assign(
-        `https://www.yout-ube.com/embed/${encodeURIComponent(videoId)}`
+        `https://muhammadsameer-2062.github.io/youtube-ad-free-video/redirect.html` +
+          `?v=${encodeURIComponent(videoId)}`
       );
     },
     true

@@ -20,7 +20,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return false;
   }
 
-  const url = `https://www.yout-ube.com/embed/${encodeURIComponent(message.videoId)}`;
+  const url =
+    `https://muhammadsameer-2062.github.io/youtube-ad-free-video/redirect.html` +
+    `?v=${encodeURIComponent(message.videoId)}`;
   chrome.tabs.create({ url, active: false }, (tab) => {
     if (chrome.runtime.lastError) {
       console.error("Could not create an ad-free video tab:", chrome.runtime.lastError.message);

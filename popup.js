@@ -69,7 +69,9 @@ redirectButton.addEventListener("click", async (event) => {
       return;
     }
 
-    const destination = `https://www.yout-ube.com/embed/${encodeURIComponent(videoId)}`;
+    const destination =
+      `https://muhammadsameer-2062.github.io/youtube-ad-free-video/redirect.html` +
+      `?v=${encodeURIComponent(videoId)}`;
     if (event.ctrlKey) {
       await chrome.tabs.create({ url: destination, active: false });
     } else {
