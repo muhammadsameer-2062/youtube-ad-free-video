@@ -1,13 +1,14 @@
 {
   "manifest_version": 3,
   "name": "Youtube Ad-Free Video",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Open YouTube videos on the ad-free video redirect page.",
   "permissions": [
     "tabs"
   ],
   "host_permissions": [
-    "https://*.youtube.com/*"
+    "https://*.youtube.com/*",
+    "https://*.youtube-nocookie.com/*"
   ],
   "icons": {
     "16": "youtube-ad-free-video.png",
@@ -17,12 +18,25 @@
   "content_scripts": [
     {
       "matches": [
-        "https://*.youtube.com/*"
+        "https://*.youtube.com/*",
+        "https://*.youtube-nocookie.com/*"
       ],
+      "all_frames": true,
+      "css": ["hide-ad-ui.css"],
       "js": [
-        "content.js"
+        "content.js",
+        "skip-ads.js"
       ],
       "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["redirect.html"],
+      "matches": [
+        "https://*.youtube.com/*",
+        "https://*.youtube-nocookie.com/*"
+      ]
     }
   ],
   "action": {

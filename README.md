@@ -9,7 +9,15 @@ they load, including when you scroll for more results.
 Example:
 
 - `https://www.youtube.com/watch?v=1234567890`
-- opens `https://muhammadsameer-2062.github.io/youtube-ad-free-video/redirect.html?v=1234567890`
+- opens the extension's bundled redirect page (`https://muhammadsameer-2062.github.io/youtube-ad-free-video/redirect.html?v=1234567890`), which loads
+  `https://www.youtube-nocookie.com/embed/1234567890?playlist=1234567890&autoplay=1&loop=1&mute=1&playsinline=1`
+
+The redirect page ships inside the extension, so no network round-trip to an
+external site is needed. The video starts muted because browsers only allow
+muted autoplay on a page the user has not interacted with; click the player's
+volume control to restore sound. If you also publish a copy of `https://muhammadsameer-2062.github.io/youtube-ad-free-video/redirect.html?v=1234567890`
+on GitHub Pages for people without the extension, keep that copy in sync with
+the bundled one (especially the `mute=1` parameter).
 
 ## Download and install in Chrome
 
